@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ozonPercent</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <div class="logo">
+            Ozon
+            <span>Percent</span>           
+        </div>
+        <div class="title">
+            Сервис расчета заработной платы
+        </div>
+    </div> 
+    <div class="main">
+        <div class="data">
+            <div class="data-table">
+                <div class="maxDay-quantity">Общее количество смен в месяце: </div>
+                <input type="text" class="maxDay-item">
+                <div class="factDay-quantity">Количество отработанных смен</div>
+                <input type="text" class="factDay-item">
+                <div class="allPercent-quantity">Общий процент</div>
+                <input type="text" class="allPercent-item">
+                <div class="error-quantity">Количество ошибок</div>
+                <input type="text" class="error-item">
+                <div class="open">
+                    <button class="start" id="start">Начать расчет</button>
+                </div>
+            </div>
+        </div>   
+        <div class="result">
+            <div class="result-table">
+                <div class="oklad">Грязный оклад</div>
+                <div class="oklad-value"></div>
+
+                <div class="factOklad">Чистый оклад</div>
+                <div class="factOklad-value"></div>
+
+                <div class="premia">Грязная премия</div>
+                <div class="premia-value"></div>
+
+                <div class="factPremia">Чистая премия</div>
+                <div class="factPremia-value"></div>
+
+                <div class="daySum">Выходит за смену</div>
+                <div class="daySum-value"></div>
+
+                <div class="allPlata">Зарплата</div>
+                <div class="allPlata-value"></div>
+                
+                <div class="plata">К выплате</div>
+                <div class="plata-value"></div>
+
+            </div>
+
+
+        </div>
+    </div>   
+
+
+
+    
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

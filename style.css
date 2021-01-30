@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: 0
+}
+
+.app {
+    background-color: #f7f5fa;
+    
+}
+
+.logo {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #fff;
+    box-shadow: 0 1.5px 10px 0 rgba(1, 0, 42, .05);
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.logo span {
+    color: #661abd
+}
+
+.title {
+    width: 100%;
+    margin-top: 30px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #262626;
+    text-align: center
+}
+
+.main {
+    display: flex;
+    margin: 0 10%;
+    padding-top: 40px;
+    
+}
+
+.data .maxDay-quantity,
+.data .factDay-quantity,
+.data .allPercent-quantity,
+.data .error-quantity{
+    margin: 13px 0;
+    font-weight: 500;
+    font-size: 14px;
+    color: #252020;
+    text-align: center
+}
+.data-table input{
+    width: 50px;
+    text-align: center;
+    margin-left: 45%;
+}
+.data .start {
+    width: 70px;
+    height: 30px;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    border-radius: 2.5px;
+    background-image: linear-gradient(336deg, #f50c0c, #1e0bc9), linear-gradient(rgb(50, 22, 100), rgb(56, 28, 82));
+    box-shadow: 0 2.5px 10px 0 rgba(1, 0, 42, .1);
+    color: #fff;
+    font-weight: 100;
+    font-size: 12px;
+    cursor: pointer;
+    width: 200px;
+    height: 45px;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 100
+}
+.result {
+    width: 45%
+}
+.data{
+    width: 45%;
+    
+}
+.data-table {
+    
+    width: 90%;
+    min-height: 400px;
+    margin: 0 auto;
+    margin-top: 42px;
+    padding: 25px;
+    background-color: #fff;
+    box-shadow: 0 1.5px 20px 0 rgba(3, 2, 65, 0.1)
+}
+
+.result-table {
+    /*display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;*/
+    width: 90%;
+    min-height: 400px;
+    margin: 0 auto;
+    margin-top: 42px;
+    padding: 25px;
+    background-color: #fff;
+    box-shadow: 0 1.5px 20px 0 rgba(1, 0, 42, .1)
+}
+.result-table .oklad,
+.result-table .factOklad,
+.result-table .factPremia,
+.result-table .premia,
+.result-table .daySum,
+.result-table .allPlata,
+.result-table .plata{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.result-table .oklad-value,
+.result-table .factOklad-value,
+.result-table .premia-value,
+.result-table .factPremia-value,
+.result-table .daySum-value,
+.result-table .allPlata-value,
+.result-table .plata-value{
+    text-align: center;
+    color: rgb(9, 83, 7);
+    font-weight: 600;
+    padding-top: 10px;
+}
+
+
