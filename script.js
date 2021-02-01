@@ -1,7 +1,6 @@
 let start = document.getElementById('start');
 
-let maxDayItem = document.getElementsByClassName('maxDay-item')[0],
-    factDayItem = document.getElementsByClassName('factDay-item')[0],
+let factDayItem = document.getElementsByClassName('factDay-item')[0],
     percentItem = document.getElementsByClassName('allPercent-item')[0];
     errorsItem = document.getElementsByClassName('error-item')[0];
 
@@ -29,7 +28,15 @@ let appData = {
 
 start.addEventListener('click', function () {
 
-    appData.maxDay = maxDayItem.value;
+    let checks = document.getElementsByName('maxDay-item');
+    if(checks[0].checked){
+        appData.maxDay = 14;
+    }else if(checks[1].checked){
+        appData.maxDay = 15;
+    }else{
+        appData.maxDay = 16;
+    };
+
     appData.factDay = factDayItem.value;
     appData.percent = percentItem.value;
     appData.errors = errorsItem.value;
@@ -42,7 +49,7 @@ start.addEventListener('click', function () {
         appData.dayPercent = myPercent * 7;
     } else if (myPercent >= 80 && myPercent < 90) {
         appData.dayPercent = myPercent * 8;
-    } else if (myPercent >= 90 && myPercent < 10) {
+    } else if (myPercent >= 90 && myPercent < 100) {
         appData.dayPercent = myPercent * 10;
     } else if (myPercent >= 100 && myPercent < 110) {
         appData.dayPercent = myPercent * 12;
@@ -57,7 +64,7 @@ start.addEventListener('click', function () {
     premiaValue.textContent = appData.allPremia();
     factPremiaValue.textContent = +(appData.allPremia()* 0.87).toFixed(2) - appData.errors*250;
 
-    let sumPlata = appData.allOklad() + appData.allPremia();
+    let sumPlata = (appData.allOklad() + appData.allPremia()).toFixed(2);
     allPlataValue.textContent = sumPlata;
     let plata = (sumPlata*0.87 - appData.errors*250).toFixed(2);
     plataValue.textContent = plata;
