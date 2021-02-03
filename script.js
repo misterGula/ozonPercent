@@ -1,4 +1,5 @@
 let start = document.getElementById('start');
+let prognoz = document.getElementById('prognoz');
 
 let factDayItem = document.getElementsByClassName('factDay-item')[0],
     percentItem = document.getElementsByClassName('allPercent-item')[0];
@@ -12,52 +13,64 @@ let okladValue = document.getElementsByClassName('oklad-value')[0],
     plataValue = document.getElementsByClassName('plata-value')[0];
     allPlataValue = document.getElementsByClassName('allPlata-value')[0];
 
+let wantPercentItem = document.getElementsByClassName('wantPercent-item')[0],
+    minusDayItem = document.getElementsByClassName('minusDay-item')[0];
+
+let  wantPercentValue = document.getElementsByClassName('wantPercent-value')[1], 
+    wantPlataValue = document.getElementsByClassName('wantPlata-value')[1];
+
 let appData = {
     maxDay: 0,
     factDay: 0,
     percent: 0,
     errors: 0,
     dayPercent: 0,
+    wantPercent: 0,
     allOklad: function(){
         return +((appData.factDay / appData.maxDay) * 22000).toFixed(2);
     },
     allPremia: function(){
         return +(appData.dayPercent * appData.factDay).toFixed(2);
+    },
+    getDayPercent: function(percent, factDay){
+        let myPercent = (appData.percent / appData.factDay);
+
+        if (myPercent >= 60 && myPercent < 70) {
+            appData.dayPercent = myPercent * 6;
+        } else if (myPercent >= 70 && myPercent < 80) {
+            appData.dayPercent = myPercent * 7;
+        } else if (myPercent >= 80 && myPercent < 90) {
+            appData.dayPercent = myPercent * 8;
+        } else if (myPercent >= 90 && myPercent < 100) {
+            appData.dayPercent = myPercent * 10;
+        } else if (myPercent >= 100 && myPercent < 110) {
+            appData.dayPercent = myPercent * 12;
+        } else if (myPercent >= 110) {
+            appData.dayPercent = myPercent * 14;
+        } else {
+            appData.dayPercent = 0;
+        };
+        },
+    getMaxDay: function(){
+        let checks = document.getElementsByName('maxDay-item');
+    if(checks[0].checked){
+        appData.maxDay = 14;
+    }else if(checks[2].checked){
+        appData.maxDay = 16;
+    }else{
+        appData.maxDay = 15;
+    };
     }
     };
 
 start.addEventListener('click', function () {
 
-    let checks = document.getElementsByName('maxDay-item');
-    if(checks[0].checked){
-        appData.maxDay = 14;
-    }else if(checks[1].checked){
-        appData.maxDay = 15;
-    }else{
-        appData.maxDay = 16;
-    };
-
+    
+    appData.getMaxDay();
     appData.factDay = factDayItem.value;
     appData.percent = percentItem.value;
     appData.errors = errorsItem.value;
-
-    let myPercent = (appData.percent / appData.factDay);
-
-    if (myPercent >= 60 && myPercent < 70) {
-        appData.dayPercent = myPercent * 6;
-    } else if (myPercent >= 70 && myPercent < 80) {
-        appData.dayPercent = myPercent * 7;
-    } else if (myPercent >= 80 && myPercent < 90) {
-        appData.dayPercent = myPercent * 8;
-    } else if (myPercent >= 90 && myPercent < 100) {
-        appData.dayPercent = myPercent * 10;
-    } else if (myPercent >= 100 && myPercent < 110) {
-        appData.dayPercent = myPercent * 12;
-    } else if (myPercent >= 110) {
-        appData.dayPercent = myPercent * 14;
-    } else {
-        appData.dayPercent = 0;
-    };
+    appData.getDayPercent(appData.percent,appData.factDay);
 
     okladValue.textContent = appData.allOklad();
     factOkladValue.textContent = (appData.allOklad()*0.87).toFixed(2);
@@ -66,8 +79,18 @@ start.addEventListener('click', function () {
 
     let sumPlata = (appData.allOklad() + appData.allPremia()).toFixed(2);
     allPlataValue.textContent = sumPlata;
-    let plata = (sumPlata*0.87 - appData.errors*250).toFixed(2);
+    let plata = +(sumPlata*0.87 - appData.errors*250).toFixed(2);
     plataValue.textContent = plata;
     daySumValue.textContent = (plata / appData.factDay).toFixed(2);
 
+});
+
+prognoz.addEventListener('click', function(){
+    appData.wantPercent = wantPercentItem.value;
+    let minusDayOne = minusDayItem.value;
+    appData.percent = percentItem.value;
+    appData.getMaxDay();
+    let minusDayTwo = appData.maxDay - appData.factDay;    
+
+    wantPercentValue.textContent = ((appData.wantPercent*(appData.maxDay-minusDayOne) - appData.percent)/(minusDayTwo - minusDayOne)).toFixed(2);
 });

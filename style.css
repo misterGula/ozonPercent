@@ -4,6 +4,9 @@
     padding: 0;
     outline: 0
 }
+h3{
+    margin: auto;
+}
 h4, h5{
     padding-top: 10px;
 }
@@ -46,6 +49,7 @@ h4, h5{
 .result {
     width: 60%;
     display: flex;
+    flex-direction: column;
 }
 .data{
     width: 30%;
@@ -55,7 +59,7 @@ h4, h5{
 .data-table {
     
     width: 100%;
-    min-height: 400px;
+    min-height: 450px;
     margin: 0 auto;
     margin-top: 42px;
     padding: 25px;
@@ -65,15 +69,31 @@ h4, h5{
 
 .result-table {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-wrap: nowrap;
+    justify-content: space-around;   
     width: 90%;
-    min-height: 400px;
+    min-height: 250px;
     margin: 0 auto;
     margin-top: 42px;
     padding: 25px;
     background-color: #fff;
     box-shadow: 0 1.5px 20px 0 rgba(3, 2, 65, 0.5)
+}
+.prognoz-table{ 
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-around; 
+    padding: 25px;
+    width: 90%;
+    margin: 0 auto;
+    min-height: 200px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 1.5px 20px 0 rgba(3, 2, 65, 0.5);
+}
+.open{
+    display: flex;
+    justify-content: space-around;
 }
 
 .result-blocks{
@@ -97,7 +117,8 @@ h4, h5{
     text-align: center;
     margin-left: 45%;
 }
-.data .start {
+.data .start,
+.prognoz-table .start {
     width: 70px;
     height: 30px;
     display: block;
@@ -139,6 +160,21 @@ h4, h5{
     color: rgb(9, 83, 7);
     font-weight: 600;
     padding-top: 10px;
+}
+
+.wantPercent-item{
+    width: 50px;
+    text-align: center;
+    float: right;
+    
+}
+.minusDay-item{
+    width: 50px;
+    text-align: center;
+    float: right;
+}
+.wantPlata-value{
+    display: none;
 }
 
 
