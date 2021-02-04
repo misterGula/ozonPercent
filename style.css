@@ -155,7 +155,8 @@ h4, h5{
 .result-table .factPremia-value,
 .result-table .daySum-value,
 .result-table .allPlata-value,
-.result-table .plata-value{
+.result-table .plata-value,
+.result-table .day-value{
     text-align: center;
     color: rgb(9, 83, 7);
     font-weight: 600;

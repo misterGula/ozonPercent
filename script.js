@@ -11,7 +11,8 @@ let okladValue = document.getElementsByClassName('oklad-value')[0],
     factPremiaValue = document.getElementsByClassName('factPremia-value')[0],
     daySumValue = document.getElementsByClassName('daySum-value')[0],
     plataValue = document.getElementsByClassName('plata-value')[0];
-    allPlataValue = document.getElementsByClassName('allPlata-value')[0];
+    allPlataValue = document.getElementsByClassName('allPlata-value')[0],
+    dayValue = document.getElementsByClassName('day-value')[0];
 
 let wantPercentItem = document.getElementsByClassName('wantPercent-item')[0],
     minusDayItem = document.getElementsByClassName('minusDay-item')[0];
@@ -64,7 +65,6 @@ let appData = {
     };
 
 start.addEventListener('click', function () {
-
     
     appData.getMaxDay();
     appData.factDay = factDayItem.value;
@@ -75,20 +75,26 @@ start.addEventListener('click', function () {
     okladValue.textContent = appData.allOklad();
     factOkladValue.textContent = (appData.allOklad()*0.87).toFixed(2);
     premiaValue.textContent = appData.allPremia();
-    factPremiaValue.textContent = +(appData.allPremia()* 0.87).toFixed(2) - appData.errors*250;
+    factPremiaValue.textContent = +((appData.allPremia()* 0.87) - appData.errors*250).toFixed(2);
 
     let sumPlata = (appData.allOklad() + appData.allPremia()).toFixed(2);
     allPlataValue.textContent = sumPlata;
     let plata = +(sumPlata*0.87 - appData.errors*250).toFixed(2);
     plataValue.textContent = plata;
     daySumValue.textContent = (plata / appData.factDay).toFixed(2);
+    dayValue.textContent = (appData.percent/appData.factDay).toFixed(2);
 
 });
 
 prognoz.addEventListener('click', function(){
     appData.wantPercent = wantPercentItem.value;
     let minusDayOne = minusDayItem.value;
-    appData.percent = percentItem.value;
+    
+    if(appData.percent != 0){
+        appData.percent = percentItem.value;
+    }else{
+        alert('Выполните предыдущие расчеты');
+    }
     appData.getMaxDay();
     let minusDayTwo = appData.maxDay - appData.factDay;    
 
