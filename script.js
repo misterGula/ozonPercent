@@ -17,8 +17,8 @@ let okladValue = document.getElementsByClassName('oklad-value')[0],
 let wantPercentItem = document.getElementsByClassName('wantPercent-item')[0],
     minusDayItem = document.getElementsByClassName('minusDay-item')[0];
 
-let  wantPercentValue = document.getElementsByClassName('wantPercent-value')[1], 
-    wantPlataValue = document.getElementsByClassName('wantPlata-value')[1];
+let wantPercentValue = document.getElementsByClassName('wantPercent-value')[1], 
+    wantPercentLostValue = document.getElementsByClassName('wantPercentLost-value')[1];
 
 let appData = {
     maxDay: 0,
@@ -81,7 +81,7 @@ start.addEventListener('click', function () {
     allPlataValue.textContent = sumPlata;
     let plata = +(sumPlata*0.87 - appData.errors*250).toFixed(2);
     plataValue.textContent = plata;
-    daySumValue.textContent = (plata / appData.factDay).toFixed(2);
+    daySumValue.textContent = (sumPlata*0.87 / appData.factDay).toFixed(2);
     dayValue.textContent = (appData.percent/appData.factDay).toFixed(2);
 
 });
@@ -99,4 +99,5 @@ prognoz.addEventListener('click', function(){
     let minusDayTwo = appData.maxDay - appData.factDay;    
 
     wantPercentValue.textContent = ((appData.wantPercent*(appData.maxDay-minusDayOne) - appData.percent)/(minusDayTwo - minusDayOne)).toFixed(2);
+    wantPercentLostValue.textContent = (appData.wantPercent*(+appData.factDay + 1) - appData.percent);
 });
