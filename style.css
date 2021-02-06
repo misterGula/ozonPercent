@@ -32,7 +32,7 @@ h4, h5{
 }
 
 .title {
-    width: 90%;
+    width: 100%;
     margin-top: 30px;
     font-weight: 500;
     font-size: 20px;
@@ -42,6 +42,7 @@ h4, h5{
 
 .main {
     display: flex;
+    width: 100%;
     margin: 0 5%;
     padding-top: 40px;
     
@@ -58,7 +59,7 @@ h4, h5{
 }
 .data-table {
     
-    width: 100%;
+    width: 90%;
     min-height: 450px;
     margin: 0 auto;
     margin-top: 42px;
@@ -174,9 +175,45 @@ h4, h5{
     text-align: center;
     float: right;
 }
-.wantPlata-value{
-    display: none;
+.wantPercent-value{
+    height: 30px;
+}
+.prognoz-item{
+    height: 60px;
 }
 
+@media only screen and (max-width: 1000px){
+    .open{
+        display: flex;
+        flex-direction: column;
+    }
+    .prognoz-item{
+        float: left;
+    }
+}
+@media only screen and (max-width: 860px){
+    .data .start{
+        width: 150px;
+    }
+}
+@media only screen and (max-width: 700px){
+    .main{
+        flex-direction: column;
+    }
+    .data, .result{
+        width: 90%;
+    }
+    .data .start{
+        width: 200px;
+    }
+}
+@media only screen and (max-width: 480px){
+    .result-table{
+        flex-direction: column;
+    }
+    .result-blocks{
+        width: auto;
+    }
+}
 
 
