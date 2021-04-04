@@ -1,99 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ozonPercent</title>
     <link rel="stylesheet" href="style.css">
+    <title>ozonPercent</title>
 </head>
+
 <body>
-    <div class="app">
-        <div class="logo">
-            Ozon
-            <span>Percent</span>           
-        </div>
-        <div class="title">
-            Сервис расчета заработной платы
-        </div>
-    </div> 
     <div class="main">
-        <div class="data">
-            <div class="data-table">
-                <div class="maxDay-quantity">Общее количество смен в месяце: </div>
-                <div class="maxDay-item">
-                    <input type="radio" name="maxDay-item" value="14">14
-                    <input type="radio" name="maxDay-item" value="15">15
-                    <input type="radio" name="maxDay-item" value="16">16
-                </div>                                                   
-                <div class="factDay-quantity">Количество отработанных смен</div>
-                <input type="text" class="factDay-item">
-                <div class="allPercent-quantity">Общий процент</div>
-                <input type="text" class="allPercent-item">
-                <div class="error-quantity">Количество ошибок</div>
-                <input type="text" class="error-item">
-                <div class="open">
-                    <button class="start" id="start">Начать расчет</button>
-                </div>
+        <header>
+            <div class="logo">
+                Ozon
+                <span>Percent</span>
             </div>
-        </div>   
-        <div class="result">
-            <div class="result-table">
-                <div class="result-blocks"><h4>Оклад</h4>
-                    <h5>Грязный</h5>
-                    <div class="oklad-value"></div>
-
-                    <h5>Чистый</h5>
-                    <div class="factOklad-value"></div>
-                </div>
-                <div class="result-blocks"><h4>Премия</h4>
-                    <h5>Грязная</h5>
-                    <div class="premia-value"></div>
-
-                    <h5>Чистая</h5>
-                    <div class="factPremia-value"></div>
-                </div>
-                <div class="result-blocks">
-                    <h4>Выходит за смену</h4>
-                    <div class="daySum-value"></div>
-                </div>
-                <div class="result-blocks"><h4>Зарплата</h4>
-                    <h5>Грязная</h5>
-                    <div class="allPlata-value"></div>
-                    <h5>К выплате</h5>
-                    <div class="plata-value"></div>
-                </div>
-                <div class="result-blocks">
-                    <h4>Средний процент</h4>
-                    <div class="day-value"></div>
-                </div>
+            
+        </header>
+        <div class="app">
+            <div class="menu">
+                <div class="menu-tabs">Общий расчет</div>
+                <div class="menu-tabs">Прогнозирование зарплаты</div>
+                <div class="menu-tabs">Прогнозирование процента</div>
             </div>
-            <h3>Прогнозирование</h3>
-            <div class="prognoz-table"> 
-                <div class="open">            
-                    <div class="prognoz-table-left">
-                        <div class="prognoz-item">Желаемый процент <input class="wantPercent-item" type="text"></div>
-                        <div class="prognoz-item">Пропущенные дни <input class="minusDay-item" type="text"></div>
-                    </div> 
-                    <div class="prognoz-table-right">
-                        <div class="wantPercent-value">Необходимый процент за оставшиеся смены: </div>
-                        <div class="wantPercent-value"></div>
-                        <div class="wantPercentLost-value">Необходимый процент за последнюю смену:  </div>
-                        <div class="wantPercentLost-value"></div>
+            <div class="tabcontent">
+                <div class="inputData">
+                    <p>Общее количество смен в месяце: </p>
+                    <div class="maxDay-item">
+                        <input type="radio" name="maxDay-item" value="14">14
+                        <input type="radio" name="maxDay-item" value="15">15
+                        <input type="radio" name="maxDay-item" value="16">16
                     </div>
-                 </div>    
-                <button class="start" id="prognoz">Спрогнозировать</button>   
+                    <p>Количество отработанных смен</p>
+                    <input type="text" class="factDay-item">
+                    <p>Общий процент</p>
+                    <input type="text" class="allPercent-item">
+                    <p>Количество ошибок</p>
+                    <input type="text" class="error-item">
+                    <div class="open">
+                        <button class="start" id="start">Начать расчет</button>
+                    </div>
+                </div>
+                <div class="outputData">
+                    <div class="result-table">
+                        <div class="result-blocks"><h4>Оклад</h4>
+                            <h5>Грязный</h5>
+                            <div class="wage-value"></div>
+        
+                            <h5>Чистый</h5>
+                            <div class="factWage-value"></div>
+                        </div>
+                        <div class="result-blocks"><h4>Премия</h4>
+                            <h5>Грязная</h5>
+                            <div class="bonus-value"></div>
+        
+                            <h5>Чистая</h5>
+                            <div class="factBonus-value"></div>
+                        </div>
+                        <div class="result-blocks">
+                            <h4>Выходит за смену</h4>
+                            <div class="dayWage-value"></div>
+                        </div>
+                        <div class="result-blocks"><h4>Зарплата</h4>
+                            <h5>Грязная</h5>
+                            <div class="allWage-value"></div>
+                            <h5>К выплате</h5>
+                            <div class="factWages-value"></div>
+                        </div>
+                        <div class="result-blocks">
+                            <h4>Средний процент</h4>
+                            <div class="middlePercent-value"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
+                
+            <div class="tabcontent">
+                <p>В разработке...</p>
+            </div>
+            <div class="tabcontent">
+                <p>В разработке...Также</p>
+            </div>
+            
         </div>
-    </div>   
+        <footer>
+           <p>Для сотрудников приема и размещения</p> 
+        </footer>
+
+    </div>
 
 
-
-    
-
-
-
-    <script src="script.js"></script>
+    <script src="main.js"></script>
 </body>
+
 </html>
