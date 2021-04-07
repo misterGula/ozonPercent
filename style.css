@@ -44,7 +44,7 @@ body{
     border: 1px solid #262626;
     border-radius: 5px;
     cursor: pointer;
-    background-color: rgba(1, 0, 42, .5);
+    background-color: rgb(128, 72, 218);
 }
 
 .tabcontent{
@@ -62,12 +62,12 @@ body{
 }
 
 .inputData{
-    min-height: 450px;
+    min-height: 400px;
     width: 30%;
     text-align: center;
 }
 .outputData{
-    min-height: 450px;
+    min-height: 400px;
     width: 60%;
     text-align: center;
 }
@@ -119,11 +119,9 @@ input{
 /* ==============footer========== */
 
 footer{
-    width: 99%;
-    line-height: 40px;
-    margin: 5px auto;
+    width: 100%;
+    line-height: 60px;
     text-align: center;
     position: absolute;
-    bottom: 0;    
-    box-shadow: 0 1.5px 20px 0 rgba(3, 2, 65, 0.5)
+    bottom: 0;
 }
