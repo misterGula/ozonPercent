@@ -78,10 +78,15 @@
                 
             <div class="tabcontent">
                 <div class="inputData">
-                    
+                    <p>Общее количество смен в месяце: </p>
+                    <div class="maxDay-item">
+                        <input type="radio" name="maxDay-item" value="14">14
+                        <input type="radio" name="maxDay-item" value="15">15
+                        <input type="radio" name="maxDay-item" value="16">16
+                    </div>
                     <p>Количество  смен</p>
                     <p>(по умолчанию стоит 15)</p>
-                    <input type="text" class="factDayPrognoz-item">
+                    <input type="text" class="factDay-item">
                     <p>Желаемый средний процент</p>
                     <input type="text" class="wantPercent-item">
                     
@@ -90,7 +95,36 @@
                     </div>
                 </div>
                 <div class="outputData">
-
+                    <div class="result-table">
+                        <div class="result-blocks"><h4>Оклад</h4>
+                            <h5>Грязный</h5>
+                            <div class="wage-value"></div>
+        
+                            <h5>Чистый</h5>
+                            <div class="factWage-value"></div>
+                        </div>
+                        <div class="result-blocks"><h4>Премия</h4>
+                            <h5>Грязная</h5>
+                            <div class="bonus-value"></div>
+        
+                            <h5>Чистая</h5>
+                            <div class="factBonus-value"></div>
+                        </div>
+                        <div class="result-blocks">
+                            <h4>Выходит за смену</h4>
+                            <div class="dayWage-value"></div>
+                        </div>
+                        <div class="result-blocks"><h4>Зарплата</h4>
+                            <h5>Грязная</h5>
+                            <div class="allWage-value"></div>
+                            <h5>К выплате</h5>
+                            <div class="factWages-value"></div>
+                        </div>
+                        <div class="result-blocks">
+                            <h4>Средний процент</h4>
+                            <div class="middlePercent-value"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="tabcontent">
