@@ -6,7 +6,8 @@ window.addEventListener('load', function() {
     //Tabs
     let tab = document.querySelectorAll('.menu-tabs'),
         menu = document.querySelector('.menu'),
-        tabContent = document.querySelectorAll('.tabcontent');
+        tabContent = document.querySelectorAll('.tabcontent'),
+        outputData = document.querySelector('.outputData');
 
     function hideTabContent(a) {
         for (let i = a; i < tab.length; i++) {
@@ -19,7 +20,9 @@ window.addEventListener('load', function() {
     function showTabContent(b) {
         if (tabContent[b].classList.contains('hide')) {
             tabContent[b].classList.remove('hide');
+            
             tabContent[b].classList.add('show');
+            
         };
     };
 
@@ -40,9 +43,10 @@ window.addEventListener('load', function() {
     // application data
 
     let appData = {
-        factDay: 0,
+        factDay: 15,
         errors: 0,
         allPercent: 0,
+        wantPercent: 0,
         monthWage: 22000,
         maxDay: 0,
         getMaxDay: function () {
@@ -85,10 +89,13 @@ window.addEventListener('load', function() {
 
     // application input value
 
-    let start = document.getElementById('start'),
+    let start = document.getElementById('start'),       
         factDay = document.querySelector('.factDay-item'),
         allPercent = document.querySelector('.allPercent-item'),
         errors = document.querySelector('.error-item');
+
+    let prognozWage = document.getElementById('prognozWage'),
+        wantPercent = document.querySelector('.wantPercent-item');    
 
 
     // application output value
@@ -124,6 +131,15 @@ window.addEventListener('load', function() {
         dayWage.textContent = calcTaxDeduction(daySum);
         let d = (daySum * appData.factDay) - appData.errors * 250;
         factWage.textContent = calcTaxDeduction(d);
+
+    });
+
+    prognozWage.addEventListener('click', function () {
+        
+        appData.wantPercent = wantPercent.value;
+        // appData.factDay = factDayPrognoz.value;
+        appData.maxDay = 15;
+
 
     });
 
