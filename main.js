@@ -43,17 +43,7 @@ let appData = {
     allPercent: 0,
     wantPercent: 0,
     monthWage: 22000,
-    maxDay: 0,
-    getMaxDay: function () {
-        let checks = document.getElementsByName('maxDay-item');
-        if (checks[0].checked) {
-            appData.maxDay = 14;
-        } else if (checks[2].checked) {
-            appData.maxDay = 16;
-        } else {
-            appData.maxDay = 15;
-        };
-    },
+    maxDay: 0,   
     calcDayBonus: function (allPercent, factDay) {
         let everyDayPercent = allPercent / factDay;
         let dayBonus;
@@ -79,6 +69,17 @@ let appData = {
 
 function calcTaxDeduction(value) {
     return Number((value * 0.87).toFixed(2));
+}
+
+function getMaxDay(a,b) {
+    let checks = document.getElementsByName('maxDay-item');
+    if (checks[a].checked) {
+        appData.maxDay = 14;
+    } else if (checks[b].checked) {
+        appData.maxDay = 16;
+    } else {
+        appData.maxDay = 15;
+    };
 }
 
 
@@ -110,7 +111,7 @@ let wageValue = document.getElementsByClassName('wage-value'),
 
 start.addEventListener('click', function () {
 
-    appData.getMaxDay();
+    getMaxDay(0,2);
     appData.factDay = factDay[0].value;
     appData.allPercent = allPercent.value;
     appData.errors = errors.value;
@@ -133,7 +134,7 @@ start.addEventListener('click', function () {
 prognozWage.addEventListener('click', function () {
 
     appData.wantPercent = wantPercent.value;
-    appData.getMaxDay();
+    getMaxDay(3,5);
     appData.factDay = factDay[1].value;
     if(appData.factDay == ''){appData.factDay = 15 };
 
