@@ -10,14 +10,17 @@ function hideTabContent(a) {
     for (let i = a; i < tab.length; i++) {
         tabContent[i].classList.remove('show');
         tabContent[i].classList.add('hide');
+        tab[i].style.backgroundColor = 'rgba(1, 0, 42, .5)';
     };
 };
 hideTabContent(1);
 
+
 function showTabContent(b) {
     if (tabContent[b].classList.contains('hide')) {
-        tabContent[b].classList.remove('hide');
+        tabContent[b].classList.remove('hide');        
         tabContent[b].classList.add('show');
+        tab[b].style.backgroundColor = 'rgba(3, 0, 177, 0.5)';
     };
 };
 
@@ -91,7 +94,7 @@ let start = document.getElementById('start'),
     errors = document.querySelector('.error-item');
 
 let prognozWage = document.getElementById('prognozWage'),
-    wantPercent = document.querySelector('.wantPercent-item');
+    wantPercent = document.getElementsByClassName('wantPercent-item');
 
 
 // application output value
@@ -133,7 +136,7 @@ start.addEventListener('click', function () {
 
 prognozWage.addEventListener('click', function () {
 
-    appData.wantPercent = wantPercent.value;
+    appData.wantPercent = wantPercent[0].value;
     getMaxDay(3,5);
     appData.factDay = factDay[1].value;
     if(appData.factDay == ''){appData.factDay = 15 };
@@ -151,8 +154,6 @@ prognozWage.addEventListener('click', function () {
     dayWage[1].textContent = calcTaxDeduction(daySum);
     let d = (daySum * appData.factDay) - appData.errors * 250;
     factWage[1].textContent = calcTaxDeduction(d);
-
-
 
 });
 

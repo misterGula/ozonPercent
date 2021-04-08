@@ -129,7 +129,21 @@
             </div>
             <div class="tabcontent">
                 <div class="inputData">
-
+                    <p>Общее количество смен в месяце: </p>
+                    <div class="maxDay-item">
+                        <input type="radio" name="maxDay-item" value="14">14
+                        <input type="radio" name="maxDay-item" value="15">15
+                        <input type="radio" name="maxDay-item" value="16">16
+                    </div>
+                    <p>Количество оставшихся смен</p>
+                    <input type="text" class="lostDay-item">
+                    <p>Текущий средний процент</p>
+                    <input type="text"  class="middlePercent-item">
+                    <p>Желаемый средний процент</p>
+                    <input type="tex" class="wantPercent-item">
+                    <div class="open">
+                        <button  id="prognozPercent">Начать расчет</button>
+                    </div>
                 </div>
                 <div class="outputData">
                     <p>В разработке...</p>
