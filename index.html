@@ -135,17 +135,22 @@
                         <input type="radio" name="maxDay-item" value="15">15
                         <input type="radio" name="maxDay-item" value="16">16
                     </div>
-                    <p>Количество оставшихся смен</p>
+                    <p>Количество отработанных смен</p>
+                    <input type="text" class="factDay-item">
+                    <p>Количество пропущенных смен</p>
                     <input type="text" class="lostDay-item">
                     <p>Текущий средний процент</p>
                     <input type="text"  class="middlePercent-item">
                     <p>Желаемый средний процент</p>
-                    <input type="tex" class="wantPercent-item">
+                    <input type="text" class="wantPercent-item">
                     <div class="open">
                         <button  id="prognozPercent">Начать расчет</button>
                     </div>
                 </div>
                 <div class="outputData">
+                    <h5>Нужный процент на последнюю смену:</h5>
+                    <div class="lostPercent-value"></div> 
+                    <h4>График</h4>                   
                     <p>В разработке...</p>
                 </div>
                 

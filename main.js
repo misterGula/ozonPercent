@@ -46,7 +46,8 @@ let appData = {
     allPercent: 0,
     wantPercent: 0,
     monthWage: 22000,
-    maxDay: 0,   
+    maxDay: 0,
+    lostDay:0,   
     calcDayBonus: function (allPercent, factDay) {
         let everyDayPercent = allPercent / factDay;
         let dayBonus;
@@ -94,7 +95,10 @@ let start = document.getElementById('start'),
     errors = document.querySelector('.error-item');
 
 let prognozWage = document.getElementById('prognozWage'),
-    wantPercent = document.getElementsByClassName('wantPercent-item');
+    prognozPercent =  document.getElementById('prognozPercent'),
+    wantPercent = document.getElementsByClassName('wantPercent-item'),
+    lostDay = document.querySelector('.lostDay-item'),
+    trueMiddlePercent = document.querySelector('.middlePercent-item');
 
 
 // application output value
@@ -106,7 +110,8 @@ let wageValue = document.getElementsByClassName('wage-value'),
     dayWage = document.getElementsByClassName('dayWage-value'),
     allWage = document.getElementsByClassName('allWage-value'),
     factWage = document.getElementsByClassName('factWages-value'),
-    middlePercent = document.getElementsByClassName('middlePercent-value');
+    middlePercent = document.getElementsByClassName('middlePercent-value'),
+    lostPercent = document.querySelector('.lostPercent-value');
 
 
 
@@ -154,6 +159,23 @@ prognozWage.addEventListener('click', function () {
     dayWage[1].textContent = calcTaxDeduction(daySum);
     let d = (daySum * appData.factDay) - appData.errors * 250;
     factWage[1].textContent = calcTaxDeduction(d);
+
+});
+
+prognozPercent.addEventListener('click', function () {
+    
+    getMaxDay(6,8);
+    appData.factDay = factDay[2].value;
+    appData.lostDay = lostDay.value;
+    if(appData.lostDay == ''){appData.lostDay = 0};
+    appData.wantPercent = wantPercent[1].value;
+    trueMiddlePercent = trueMiddlePercent.value;
+
+    let a = appData.maxDay - appData.lostDay; //true maxDay
+    let b = appData.wantPercent * a; // max want percent
+    let c = appData.lostPercent * a; // max true percent
+    
+    lostPercent.textContent = 'В разработке..';
 
 });
 

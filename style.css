@@ -126,3 +126,54 @@ footer{
     position: sticky;   
     box-shadow: 0 1.5px 20px 0 rgba(3, 2, 65, 0.5)
 }
+
+/* ============mobile styles=========== */
+
+@media only screen and (max-width: 810px){
+    .tabcontent{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .hide{
+        display: none;
+    }
+    
+    .show{
+        display: flex;
+    }
+    .open{
+        margin: auto;
+    }
+    button{
+        width: 100px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 610px){
+    .result-table{
+        flex-direction: column;
+    }
+    .menu{
+        flex-direction: column;
+        align-items: center;
+    }
+    .menu-tabs{
+        width: 100%;
+    }
+    .hide{
+        display: none;
+    }
+    
+    .show{
+        display: flex;
+    }
+    .open{
+        margin: auto;
+    }
+    button{
+        width: 100px;
+        font-size: 14px;
+    }
+}
