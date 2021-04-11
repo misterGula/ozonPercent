@@ -46,8 +46,8 @@ let appData = {
     allPercent: 0,
     wantPercent: 0,
     monthWage: 22000,
-    maxDay: 0,
-    lostDay:0,   
+    maxDay: 0, 
+    everyDayPercent: 0,  
     calcDayBonus: function (allPercent, factDay) {
         let everyDayPercent = allPercent / factDay;
         let dayBonus;
@@ -97,7 +97,6 @@ let start = document.getElementById('start'),
 let prognozWage = document.getElementById('prognozWage'),
     prognozPercent =  document.getElementById('prognozPercent'),
     wantPercent = document.getElementsByClassName('wantPercent-item'),
-    lostDay = document.querySelector('.lostDay-item'),
     trueMiddlePercent = document.querySelector('.middlePercent-item');
 
 
@@ -164,20 +163,19 @@ prognozWage.addEventListener('click', function () {
 
 prognozPercent.addEventListener('click', function () {
     
-    getMaxDay(6,8);
     appData.factDay = factDay[2].value;
-    appData.lostDay = lostDay.value;
-    if(appData.lostDay == ''){appData.lostDay = 0};
     appData.wantPercent = wantPercent[1].value;
-    trueMiddlePercent = trueMiddlePercent.value;
+    appData.everyDayPercent = Number(trueMiddlePercent.value);
 
-    let a = appData.maxDay - appData.lostDay; //true maxDay
-    let b = appData.wantPercent * a; // max want percent
-    let c = appData.lostPercent * a; // max true percent
-    
-    lostPercent.textContent = 'В разработке..';
-
+    let lost = (appData.wantPercent * appData.factDay) - (appData.everyDayPercent * appData.factDay);
+    let lostP = appData.everyDayPercent + lost;
+    if(lostP > 0){
+    lostPercent.textContent = lostP;
+    } else{
+    lostPercent.textContent = 'Отдыхаем!';
+    }
 });
+
 
 
 
