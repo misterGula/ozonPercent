@@ -44,7 +44,7 @@ body{
     border: 1px solid #262626;
     border-radius: 5px;
     cursor: pointer;
-    background-color: rgba(1, 0, 42, .5);
+    background-color: rgba(3, 0, 177, 0.5);
 }
 
 .tabcontent{
@@ -114,6 +114,11 @@ input{
     text-align: center;
     width: 50px;
     border-radius: 5px;
+}
+
+table{
+    align-items: center;
+    margin: auto;
 }
 
 /* ==============footer========== */

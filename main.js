@@ -18,7 +18,7 @@ hideTabContent(1);
 
 function showTabContent(b) {
     if (tabContent[b].classList.contains('hide')) {
-        tabContent[b].classList.remove('hide');        
+        tabContent[b].classList.remove('hide');
         tabContent[b].classList.add('show');
         tab[b].style.backgroundColor = 'rgba(3, 0, 177, 0.5)';
     };
@@ -46,8 +46,8 @@ let appData = {
     allPercent: 0,
     wantPercent: 0,
     monthWage: 22000,
-    maxDay: 0, 
-    everyDayPercent: 0,  
+    maxDay: 0,
+    everyDayPercent: 0,
     calcDayBonus: function (allPercent, factDay) {
         let everyDayPercent = allPercent / factDay;
         let dayBonus;
@@ -75,7 +75,7 @@ function calcTaxDeduction(value) {
     return Number((value * 0.87).toFixed(2));
 }
 
-function getMaxDay(a,b) {
+function getMaxDay(a, b) {
     let checks = document.getElementsByName('maxDay-item');
     if (checks[a].checked) {
         appData.maxDay = 14;
@@ -95,7 +95,7 @@ let start = document.getElementById('start'),
     errors = document.querySelector('.error-item');
 
 let prognozWage = document.getElementById('prognozWage'),
-    prognozPercent =  document.getElementById('prognozPercent'),
+    prognozPercent = document.getElementById('prognozPercent'),
     wantPercent = document.getElementsByClassName('wantPercent-item'),
     trueMiddlePercent = document.querySelector('.middlePercent-item');
 
@@ -118,7 +118,7 @@ let wageValue = document.getElementsByClassName('wage-value'),
 
 start.addEventListener('click', function () {
 
-    getMaxDay(0,2);
+    getMaxDay(0, 2);
     appData.factDay = factDay[0].value;
     appData.allPercent = allPercent.value;
     appData.errors = errors.value;
@@ -141,14 +141,14 @@ start.addEventListener('click', function () {
 prognozWage.addEventListener('click', function () {
 
     appData.wantPercent = wantPercent[0].value;
-    getMaxDay(3,5);
+    getMaxDay(3, 5);
     appData.factDay = factDay[1].value;
-    if(appData.factDay == ''){appData.factDay = 15 };
+    if (appData.factDay == '') { appData.factDay = 15 };
 
     let a = +(appData.monthWage * (appData.factDay / appData.maxDay)).toFixed(2);
     wageValue[1].textContent = a;
     factWageValue[1].textContent = calcTaxDeduction(a);
-    let x = appData.wantPercent*appData.factDay;
+    let x = appData.wantPercent * appData.factDay;
     let b = +(appData.calcDayBonus(x, appData.factDay) * appData.factDay);
     bonusValue[1].textContent = b;
     factBonusValue[1].textContent = calcTaxDeduction(b);
@@ -162,19 +162,65 @@ prognozWage.addEventListener('click', function () {
 });
 
 prognozPercent.addEventListener('click', function () {
-    
+
     appData.factDay = factDay[2].value;
     appData.wantPercent = wantPercent[1].value;
     appData.everyDayPercent = Number(trueMiddlePercent.value);
 
     let lost = (appData.wantPercent * appData.factDay) - (appData.everyDayPercent * appData.factDay);
     let lostP = appData.everyDayPercent + lost;
-    if(lostP > 0){
-    lostPercent.textContent = lostP;
-    } else{
-    lostPercent.textContent = 'Отдыхаем!';
+    if (lostP > 0) {
+        lostPercent.textContent = lostP;
+    } else {
+        lostPercent.textContent = 'Отдыхаем!';
     }
 });
+
+// Calendar
+
+function createCalendar(id, year, month) {
+    const elem = document.getElementById(id);
+
+    let d = new Date(year, month);
+
+    let table = '<table><tr><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th></tr><tr>';
+
+
+    for (let i = 0; i < getDay(d); i++) {
+        table += '<td></td>';
+    }
+
+    while (d.getMonth() == month) {
+        table += '<td>' + d.getDate() + '</td>';
+
+        if (getDay(d) % 7 == 6) {
+            table += '</tr><tr>';
+        }
+
+        d.setDate(d.getDate() + 1);
+    }
+
+    if (getDay(d) != 0) {
+        for (let i = getDay(d); i < 7; i++) {
+            table += '<td></td>';
+        }
+    }
+
+    table += '</tr></table>';
+
+    elem.innerHTML = table;
+}
+
+function getDay(date) {
+    let day = date.getDay();
+    if (day == 0) day = 7;
+    return day - 1;
+}
+
+let dateYear = new Date().getFullYear();
+let dateMonth = new Date().getMonth();
+
+createCalendar("calendar", dateYear, dateMonth);
 
 
 
