@@ -81,7 +81,8 @@ body{
 .wage-value, .factWage-value,
 .bonus-value, .factBonus-value,
 .dayWage-value, .allWage-value,
-.factWages-value, .middlePercent-value {
+.factWages-value, .middlePercent-value,
+.lostPercent-value {
     color: rgb(8, 56, 1);
     font-weight: 600;
 }
@@ -117,8 +118,29 @@ input{
 }
 
 table{
-    align-items: center;
+    display: flex;
+    justify-content: center;
     margin: auto;
+}
+td{
+    border: 2px solid #140536;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    font-weight: bold;
+}
+
+th{
+    width: 40px;
+    height: 40px;
+    font-weight: bold;
+    background-color: #140536;
+    border-radius: 5px; 
+    color: #fff;
+}
+
+.active{
+    background-color: rgb(146, 17, 17);
 }
 
 /* ==============footer========== */

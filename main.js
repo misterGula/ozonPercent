@@ -180,7 +180,7 @@ prognozPercent.addEventListener('click', function () {
 
 function createCalendar(id, year, month) {
     const elem = document.getElementById(id);
-
+    
     let d = new Date(year, month);
 
     let table = '<table><tr><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th></tr><tr>';
@@ -198,6 +198,7 @@ function createCalendar(id, year, month) {
         }
 
         d.setDate(d.getDate() + 1);
+
     }
 
     if (getDay(d) != 0) {
@@ -221,6 +222,7 @@ let dateYear = new Date().getFullYear();
 let dateMonth = new Date().getMonth();
 
 createCalendar("calendar", dateYear, dateMonth);
+
 
 
 
