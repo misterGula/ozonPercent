@@ -167,7 +167,7 @@ prognozPercent.addEventListener('click', function () {
     appData.wantPercent = wantPercent[1].value;
     appData.everyDayPercent = Number(trueMiddlePercent.value);
 
-    let lost = (appData.wantPercent * appData.factDay) - (appData.everyDayPercent * appData.factDay);
+    let lost = (appData.wantPercent - appData.everyDayPercent)*(+appData.factDay + 1);
     let lostP = appData.everyDayPercent + lost;
     if (lostP > 0) {
         lostPercent.textContent = lostP;
