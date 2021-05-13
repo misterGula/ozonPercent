@@ -2,7 +2,7 @@
 'use strict';
 
 //Tabs
-let tab = document.querySelectorAll('.menu-tabs'),
+const tab = document.querySelectorAll('.menu-tabs'),
     menu = document.querySelector('.menu'),
     tabContent = document.querySelectorAll('.tabcontent');
 
@@ -89,27 +89,27 @@ function getMaxDay(a, b) {
 
 // application input value
 
-let start = document.getElementById('start'),
-    factDay = document.getElementsByClassName('factDay-item'),
-    allPercent = document.querySelector('.allPercent-item'),
-    errors = document.querySelector('.error-item');
+const start = document.getElementById('start'),
+      factDay = document.querySelectorAll('.factDay-item'),
+      allPercent = document.querySelector('.allPercent-item'),
+      errors = document.querySelector('.error-item');
 
-let prognozWage = document.getElementById('prognozWage'),
-    prognozPercent = document.getElementById('prognozPercent'),
-    wantPercent = document.getElementsByClassName('wantPercent-item'),
-    trueMiddlePercent = document.querySelector('.middlePercent-item');
+const prognozWage = document.getElementById('prognozWage'),
+      prognozPercent = document.getElementById('prognozPercent'),
+      wantPercent = document.querySelectorAll('.wantPercent-item'),
+      trueMiddlePercent = document.querySelector('.middlePercent-item');
 
 
 // application output value
 
-let wageValue = document.getElementsByClassName('wage-value'),
-    factWageValue = document.getElementsByClassName('factWage-value'),
-    bonusValue = document.getElementsByClassName('bonus-value'),
-    factBonusValue = document.getElementsByClassName('factBonus-value'),
-    dayWage = document.getElementsByClassName('dayWage-value'),
-    allWage = document.getElementsByClassName('allWage-value'),
-    factWage = document.getElementsByClassName('factWages-value'),
-    middlePercent = document.getElementsByClassName('middlePercent-value'),
+let wageValue = document.querySelectorAll('.wage-value'),
+    factWageValue = document.querySelectorAll('.factWage-value'),
+    bonusValue = document.querySelectorAll('.bonus-value'),
+    factBonusValue = document.querySelectorAll('.factBonus-value'),
+    dayWage = document.querySelectorAll('.dayWage-value'),
+    allWage = document.querySelectorAll('.allWage-value'),
+    factWage = document.querySelectorAll('.factWages-value'),
+    middlePercent = document.querySelectorAll('.middlePercent-value'),
     lostPercent = document.querySelector('.lostPercent-value');
 
 
@@ -176,6 +176,11 @@ prognozPercent.addEventListener('click', function () {
     }
 });
 
+let dateYear = new Date().getFullYear();
+let dateMonth = new Date().getMonth();
+createCalendar('calendar', dateYear, dateMonth);
+createMonthGraphik();
+
 // Calendar
 
 function createCalendar(id, year, month) {
@@ -218,27 +223,27 @@ function getDay(date) {
     return day - 1;
 }
 
-let dateYear = new Date().getFullYear();
-let dateMonth = new Date().getMonth();
+// Graphik
 
-createCalendar("calendar", dateYear, dateMonth);
+function createMonthGraphik(){
+    let td = document.querySelectorAll('td');
+    td.forEach(item => {
 
-let td = document.querySelectorAll('td');
-td.forEach(td => {
-
-            let cell = +td.innerHTML;
+            let cell = +item.innerHTML;
             cell = cell - 1;
             if(cell >= 0){
             let x = howManyDay(0,cell);
                 if(x % 4 == 0){
-                td.classList.add('active');
+                item.classList.add('active');
                 } 
             let y = howManyDay(1,cell);
                 if(y % 4 == 0){
-                td.classList.add('active');
+                item.classList.add('active');
                 }
             }                     
         });
+}
+
 
 function howManyDay(smena,value) {
     const pointDateOne = new Date(2021,3,0).getTime();
