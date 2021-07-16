@@ -86,6 +86,8 @@ function getMaxDay(a, b) {
     };
 }
 
+let monthArray = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+
 
 // application input value
 
@@ -113,7 +115,6 @@ let wageValue = document.querySelectorAll('.wage-value'),
     lostPercent = document.querySelector('.lostPercent-value');
 
 
-
 // application work
 
 start.addEventListener('click', function () {
@@ -135,6 +136,7 @@ start.addEventListener('click', function () {
     dayWage[0].textContent = calcTaxDeduction(daySum);
     let d = (daySum * appData.factDay) - appData.errors * 250;
     factWage[0].textContent = calcTaxDeduction(d);
+    debugger
 
 });
 
@@ -179,12 +181,13 @@ prognozPercent.addEventListener('click', function () {
 let dateYear = new Date().getFullYear();
 let dateMonth = new Date().getMonth();
 createCalendar('calendar', dateYear, dateMonth);
-createMonthGraphik();
+createMonthGraphik(dateMonth);
 
 // Calendar
 
 function createCalendar(id, year, month) {
     const elem = document.getElementById(id);
+    
     
     let d = new Date(year, month);
 
@@ -225,18 +228,18 @@ function getDay(date) {
 
 // Graphik
 
-function createMonthGraphik(){
+function createMonthGraphik(dateMonth){
     let td = document.querySelectorAll('td');
     td.forEach(item => {
 
             let cell = +item.innerHTML;
             cell = cell - 1;
             if(cell >= 0){
-            let x = howManyDay(0,cell);
+            let x = howManyDay(0,cell,dateMonth);
                 if(x % 4 == 0){
                 item.classList.add('active');
                 } 
-            let y = howManyDay(1,cell);
+            let y = howManyDay(1,cell,dateMonth);
                 if(y % 4 == 0){
                 item.classList.add('active');
                 }
@@ -245,12 +248,12 @@ function createMonthGraphik(){
 }
 
 
-function howManyDay(smena,value) {
+function howManyDay(smena,value,dateMonth) {
     const pointDateOne = new Date(2021,3,0).getTime();
     let dayOne = 1000 * 60 * 60 * 24;
     let dayOnePoint = Math.floor(pointDateOne / dayOne);  
     let now = new Date();
-    let whatDay = new Date(now.getFullYear(),now.getMonth(),value).getTime();
+    let whatDay = new Date(now.getFullYear(), dateMonth ,value).getTime();
     let whatDay1 = Math.floor(whatDay / dayOne);
     if (smena == 1){
         dayOnePoint = dayOnePoint + 1;
@@ -259,6 +262,32 @@ function howManyDay(smena,value) {
         return (whatDay1 - dayOnePoint);
     }
  }; 
+
+// Graphik Choise month
+
+const prevCreateGraphik =  document.querySelector('.prev-btn'),
+      nowCreateGraphik =  document.querySelector('.now-btn'),
+      nextCreateGraphik =  document.querySelector('.next-btn');
+
+prevCreateGraphik.addEventListener('click', () => {
+    createCalendar('calendar', dateYear, dateMonth - 1);
+    createMonthGraphik(dateMonth - 1);
+ });
+
+nowCreateGraphik.addEventListener('click', () => {
+    createCalendar('calendar', dateYear, dateMonth);
+    createMonthGraphik(dateMonth);
+ });
+
+nextCreateGraphik.addEventListener('click', () => {
+    createCalendar('calendar', dateYear, dateMonth + 1);
+    createMonthGraphik(dateMonth + 1);
+ });
+
+
+
+
+
  
  
 

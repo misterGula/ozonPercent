@@ -154,6 +154,16 @@ footer{
     box-shadow: 0 1.5px 20px 0 rgba(3, 2, 65, 0.5)
 }
 
+.prev-btn, .next-btn, .now-btn {
+    width: 200px;
+    height: 30px;
+    display: inline-block;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    background: rgb(62, 14, 150);
+}
+
 /* ============mobile styles=========== */
 
 @media only screen and (max-width: 810px){
@@ -199,10 +209,16 @@ footer{
     .open{
         margin: auto;
     }
-    button{
+    button {
         width: 100px;
         height: 100px;
         font-size: 14px;
+        border-radius: 50%;
+    }
+    .prev-btn, .now-btn, .next-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 10px;
         border-radius: 50%;
     }
 }
